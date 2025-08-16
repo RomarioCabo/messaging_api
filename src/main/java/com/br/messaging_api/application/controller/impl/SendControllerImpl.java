@@ -10,17 +10,19 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import static com.br.messaging_api.application.controller.constants.ControllerConstants.V1;
+
 @Slf4j
 @CrossOrigin("*")
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping(V1)
 @RequiredArgsConstructor
 public class SendControllerImpl implements SendController {
 
     private final SendService sendService;
 
     @Override
-    public ResponseEntity<Void> generate(final OtpRequest request) {
+    public ResponseEntity<Void> email(final OtpRequest request) {
         sendService.email(request.getTemplateId(), request.getEmailTo(), request.getSubject(),
                 request.getTemplateVariables());
         return ResponseEntity.ok().build();

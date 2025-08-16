@@ -4,6 +4,7 @@ import com.br.messaging_api.domain.send.SendService;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
@@ -16,14 +17,15 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class SendServiceImpl implements SendService {
 
+    @Value("${mail.username}")
+    private String from;
+
     private final JavaMailSender mailSender;
     private final SpringTemplateEngine templateEngine;
 
     @Override
     public void email(final String templateId, final String to, final String subject,
                       final Map<String, Object> templateModel) {
-        String from = System.getenv("MAIL_USERNAME");
-
         Context context = new Context();
         context.setVariables(templateModel);
 

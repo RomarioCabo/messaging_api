@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import static com.br.messaging_api.application.controller.constants.ControllerConstants.SEND;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @Tags(@Tag(name = "Send", description = "Send REST Controller"))
@@ -28,6 +29,6 @@ public interface SendController {
                     mediaType = APPLICATION_JSON_VALUE,
                     schema = @Schema(implementation = ErrorHttpResponseDto.class))
             })
-    @PostMapping(value = "send/otp", consumes = APPLICATION_JSON_VALUE)
-    ResponseEntity<Void> generate(@RequestBody @Valid final OtpRequest request);
+    @PostMapping(value = SEND, consumes = APPLICATION_JSON_VALUE)
+    ResponseEntity<Void> email(@RequestBody @Valid final OtpRequest request);
 }
