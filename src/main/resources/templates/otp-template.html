@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Código de Verificação</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f9f9f9;
+            padding: 0;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 40px auto;
+            padding: 30px 40px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        .message {
+            font-size: 16px;
+            color: #333333;
+            margin-bottom: 30px;
+        }
+
+        .code-box {
+            display: inline-block;
+            background-color: #f1efec;
+            color: #3b3b3b;
+            font-size: 48px;
+            font-weight: bold;
+            letter-spacing: 10px;
+            padding: 15px 30px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+        }
+
+        .footer {
+            font-size: 12px;
+            color: #999999;
+            line-height: 1.6;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="message">
+        Este é o código de verificação para acesso ao sistema:
+    </div>
+
+    <div class="code-box" th:text="${otpCode}">
+        87674
+    </div>
+
+    <div class="footer">
+        O código irá expirar em 5 minutos.<br>
+        Este e-mail foi gerado automaticamente e não deve ser respondido.<br>
+        Se você não solicitou esse código, ignore este e-mail e altere sua senha.
+    </div>
+</div>
+</body>
+</html>
