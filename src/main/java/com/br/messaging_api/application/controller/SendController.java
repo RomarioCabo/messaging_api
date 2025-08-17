@@ -1,7 +1,7 @@
 package com.br.messaging_api.application.controller;
 
 import com.br.messaging_api.application.exception.ErrorHttpResponseDto;
-import com.br.messaging_api.domain.otp.OtpRequest;
+import com.br.messaging_api.domain.message.MessageRequest;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -30,5 +30,5 @@ public interface SendController {
                     schema = @Schema(implementation = ErrorHttpResponseDto.class))
             })
     @PostMapping(value = SEND, consumes = APPLICATION_JSON_VALUE)
-    ResponseEntity<Void> email(@RequestBody @Valid final OtpRequest request);
+    ResponseEntity<Void> email(@RequestBody @Valid final MessageRequest request);
 }

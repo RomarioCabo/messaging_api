@@ -1,7 +1,7 @@
 package com.br.messaging_api.application.controller.impl;
 
 import com.br.messaging_api.application.controller.SendController;
-import com.br.messaging_api.domain.otp.OtpRequest;
+import com.br.messaging_api.domain.message.MessageRequest;
 import com.br.messaging_api.domain.send.SendService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -22,7 +22,7 @@ public class SendControllerImpl implements SendController {
     private final SendService sendService;
 
     @Override
-    public ResponseEntity<Void> email(final OtpRequest request) {
+    public ResponseEntity<Void> email(final MessageRequest request) {
         sendService.email(request.getTemplateId(), request.getEmailTo(), request.getSubject(),
                 request.getTemplateVariables());
         return ResponseEntity.ok().build();

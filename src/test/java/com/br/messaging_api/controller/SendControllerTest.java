@@ -1,7 +1,7 @@
 package com.br.messaging_api.controller;
 
 import com.br.messaging_api.application.controller.impl.SendControllerImpl;
-import com.br.messaging_api.domain.otp.OtpRequest;
+import com.br.messaging_api.domain.message.MessageRequest;
 import com.br.messaging_api.domain.send.SendService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.SneakyThrows;
@@ -46,7 +46,7 @@ class SendControllerTest {
     @Test
     @SneakyThrows
     void shouldSendEmailWithSuccess() {
-        OtpRequest request = buildOtpRequest();
+        MessageRequest request = buildOtpRequest();
 
         mockMvc.perform(post(V1.concat(SEND))
                         .contentType(MediaType.APPLICATION_JSON)
@@ -58,8 +58,8 @@ class SendControllerTest {
                         eq(SUBJECT), eq(TEMPLATE_VARIABLES));
     }
 
-    private OtpRequest buildOtpRequest() {
-        return OtpRequest.builder()
+    private MessageRequest buildOtpRequest() {
+        return MessageRequest.builder()
                 .templateId(TEMPLATE_ID)
                 .emailTo(EMAIL_TO)
                 .subject(SUBJECT)

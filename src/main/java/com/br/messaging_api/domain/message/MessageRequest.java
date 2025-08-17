@@ -1,4 +1,4 @@
-package com.br.messaging_api.domain.otp;
+package com.br.messaging_api.domain.message;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -13,7 +13,7 @@ import java.util.Map;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class OtpRequest {
+public class MessageRequest {
 
     @NotBlank(message = "O campo templateId não pode ser vazio ou nulo.")
     private String templateId;
